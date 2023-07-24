@@ -1,0 +1,22 @@
+<h2>Fixing the code</h2>
+<div class="step-text">
+<p>What do you need to change to execute the code below?</p>
+<pre><code class="language-java">class Action {
+    public void doAction() {
+        System.out.println("Doing an action");
+    }
+}
+
+
+class Human {
+
+    public void doYoga() {
+        Action action = new Action() {
+            public void doAction() {
+                System.out.println("Doing yoga.");
+            }
+        }
+        action.doAction();
+    }
+}</code></pre>
+</div>
