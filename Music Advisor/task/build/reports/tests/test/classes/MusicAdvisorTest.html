@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">5.393s</div>
+<div class="counter">4.979s</div>
 <p>duration</p>
 </div>
 </td>
@@ -69,9 +69,6 @@
 <li>
 <a href="#tab2">Standard output</a>
 </li>
-<li>
-<a href="#tab3">Standard error</a>
-</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Failed tests</h2>
@@ -92,12 +89,51 @@ Arguments: -access http://127.0.0.1:45678
 
 &gt; auth
 use this link to request the access code: 
-https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&amp;redirect_uri=http://localhost:8181/callback&amp;response_type=code
+https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&amp;redirect_uri=http://localhost:8181&amp;response_type=code
 waiting for code...
-code received
+Authorization code not found. Try again.
+Authorization code not found. Try again.
+Got the code. Return back to your program.
+Got the code. Return back to your program.
 making http request for access_token...
+http://127.0.0.1:45678
+https://accounts.spotify.com/http://127.0.0.1:45678 POST
+301
+Key is: :status
+301
+Key is: alt-svc
+h3=&quot;:443&quot;; ma=2592000,h3-29=&quot;:443&quot;; ma=2592000
+Key is: content-length
+162
+Key is: content-type
+text/html
+Key is: date
+Fri, 28 Jul 2023 18:02:32 GMT
+Key is: location
+https://www.spotify.com/int/why-not-available/
+Key is: server
+envoy
+Key is: sp-trace-id
+112751182ec0932a
+Key is: strict-transport-security
+max-age=31536000
+Key is: vary
+Accept-Encoding
+Key is: via
+HTTP/2 edgeproxy, 1.1 google
+Key is: x-content-type-options
+nosniff
+Key is: x-envoy-upstream-service-time
+10
 response:
-{&quot;access_token&quot;:&quot;BQBBBe5UMPIA96jPDNy1vZgKBO6Xl6_CqmEhncn0-7EHitrOwwUFdQmRwd2d-Zvht6k3OsEVJlQpvMpXeuV0GPBhoKXCe9SMg0D44kSwjKoZxM9iM932gee0RHVg2_sN8oFqNTeNPsKX7ZG23J3d1uEjhFSOM55pmXNhLKtuTCizOIT0BGe6c4VEk0TGwv2boD0GnQ&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:3600,&quot;refresh_token&quot;:&quot;AQB6CxjHLaWy8x3LAVy3hm-sLoevg2pFKws4JaXFE97aRa1kwJ__KSRcPpqwrYzvhkf3cRArCfMKVe9rc2_f1_pK6DFfPdr2iSefNyGIGGHRPH2z5egnpFruv51nnghPM7M&quot;}
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
 ---SUCCESS---
 	at org.junit.Assert.fail(Assert.java:89)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:203)
@@ -161,7 +197,7 @@ response:
 </thead>
 <tr>
 <td class="failures">start</td>
-<td class="failures">5.393s</td>
+<td class="failures">4.979s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -173,52 +209,56 @@ response:
 Start test 1?[0m
 &gt; auth
 use this link to request the access code: 
-https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&amp;redirect_uri=http://localhost:8181/callback&amp;response_type=code
+https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&amp;redirect_uri=http://localhost:8181&amp;response_type=code
 waiting for code...
-?[0;34mTester: making requests to redirect uri: http://localhost:8181/callback
-?[0m?[0;34mTester: Error: HTTP/1.1 header parser received no bytes
-code received
+?[0;34mTester: making requests to redirect uri: http://localhost:8181
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 1: Authorization code not found. Try again.
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 2: Authorization code not found. Try again.
+Got the code. Return back to your program.
+?[0m?[0;34mTester: done request 3: Got the code. Return back to your program.
+Got the code. Return back to your program.
 making http request for access_token...
+http://127.0.0.1:45678
+https://accounts.spotify.com/http://127.0.0.1:45678 POST
+301
+Key is: :status
+301
+Key is: alt-svc
+h3=&quot;:443&quot;; ma=2592000,h3-29=&quot;:443&quot;; ma=2592000
+Key is: content-length
+162
+Key is: content-type
+text/html
+Key is: date
+Fri, 28 Jul 2023 18:02:32 GMT
+Key is: location
+https://www.spotify.com/int/why-not-available/
+Key is: server
+envoy
+Key is: sp-trace-id
+112751182ec0932a
+Key is: strict-transport-security
+max-age=31536000
+Key is: vary
+Accept-Encoding
+Key is: via
+HTTP/2 edgeproxy, 1.1 google
+Key is: x-content-type-options
+nosniff
+Key is: x-envoy-upstream-service-time
+10
 response:
-{&quot;access_token&quot;:&quot;BQBBBe5UMPIA96jPDNy1vZgKBO6Xl6_CqmEhncn0-7EHitrOwwUFdQmRwd2d-Zvht6k3OsEVJlQpvMpXeuV0GPBhoKXCe9SMg0D44kSwjKoZxM9iM932gee0RHVg2_sN8oFqNTeNPsKX7ZG23J3d1uEjhFSOM55pmXNhLKtuTCizOIT0BGe6c4VEk0TGwv2boD0GnQ&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:3600,&quot;refresh_token&quot;:&quot;AQB6CxjHLaWy8x3LAVy3hm-sLoevg2pFKws4JaXFE97aRa1kwJ__KSRcPpqwrYzvhkf3cRArCfMKVe9rc2_f1_pK6DFfPdr2iSefNyGIGGHRPH2z5egnpFruv51nnghPM7M&quot;}
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
 ---SUCCESS---
-</pre>
-</span>
-</div>
-<div id="tab3" class="tab">
-<h2>Standard error</h2>
-<span class="code">
-<pre>?[0;34mjava.io.IOException: HTTP/1.1 header parser received no bytes
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:586)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:123)
-?[0m?[0;34m	at Server.run(Server.java:74)
-?[0m?[0;34mCaused by: java.io.IOException: HTTP/1.1 header parser received no bytes
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.Utils.wrapWithExtraDetail(Utils.java:348)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.Http1Response$HeadersReader.onReadError(Http1Response.java:675)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.checkForErrors(Http1AsyncReceiver.java:302)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.flush(Http1AsyncReceiver.java:268)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$LockingRestartableTask.run(SequentialScheduler.java:205)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(SequentialScheduler.java:149)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:230)
-?[0m?[0;34m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-?[0m?[0;34m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-?[0m?[0;34m	at java.base/java.lang.Thread.run(Thread.java:833)
-?[0m?[0;34m	at java.base/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:162)
-?[0m?[0;34mCaused by: java.io.EOFException: EOF reached while reading
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver$Http1TubeSubscriber.onComplete(Http1AsyncReceiver.java:596)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadSubscription.signalCompletion(SocketTube.java:640)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:845)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:230)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:303)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:256)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:774)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:957)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:979)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:934)
-?[0m?[0;34m	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:934)
 </pre>
 </span>
 </div>
@@ -230,7 +270,7 @@ response:
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 7.3.3</a> at 24 июл. 2023 г., 17:53:49</p>
+<a href="http://www.gradle.org">Gradle 7.3.3</a> at 28 июл. 2023 г., 21:02:34</p>
 </div>
 </div>
 </body>

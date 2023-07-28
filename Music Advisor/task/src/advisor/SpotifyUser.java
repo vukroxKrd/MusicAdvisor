@@ -10,6 +10,7 @@ public class SpotifyUser {
     private String access_token;
     private String refresh_token;
 
+    private String endpointUrl;
     public SpotifyUser() {
     }
 
@@ -66,5 +67,12 @@ public class SpotifyUser {
     }
     public void setRefresh_token(String refresh_token) {
         this.refresh_token = refresh_token;
+    }
+
+    public String getEndpointUrl() {
+        return endpointUrl;
+    }
+    public void setEndpointUrl(String endpointUrl) {
+        this.endpointUrl = endpointUrl;
     }
 }

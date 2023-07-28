@@ -2,9 +2,18 @@ package advisor;
 
 import server.HTTPServer;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.*;
+import java.util.List;
+
+import static advisor.Main.domainName;
+import static java.net.http.HttpRequest.newBuilder;
 
 public class InputSemaphore {
     public static final List<String> supportedOps = List.of("new", "featured", "categories", "playlists Mood", "auth", "exit");
@@ -41,9 +50,49 @@ public class InputSemaphore {
 
     private void authenticate(SpotifyUser user) {
 
+        try {
+            HTTPServer.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         HTTPServer.listen(user);
 
-        makeInitiallCallForAuthCode(user);
+        String storedState = HTTPServer.generateRandomState(10);
+        user.setStoredState(storedState);
+
+        HttpClient client = HttpClient.newBuilder()
+                //https://stackoverflow.com/questions/66325516/how-to-follow-through-on-http-303-status-code-when-using-httpclient-in-java-11-a
+//                .followRedirects(HttpClient.Redirect.NORMAL)
+                .build();
+
+        /* Формируем url */
+        String responseType = "code";
+        String redirectUri = "http://localhost:8181";
+//        String scope = "user-read-private%20user-read-email";
+
+        String url = String.format("%s/authorize?client_id=%s&response_type=%s&redirect_uri=%s&state=%s", Main.domainName, user.getClientId(), responseType, redirectUri, storedState);
+
+        /* Формируем HTTP запрос */
+        HttpRequest request = newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+
+        HttpResponse<String> initialGetRequest;
+        try {
+            initialGetRequest = client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (Desktop.isDesktopSupported()) {
+            try {
+                Desktop.getDesktop().browse(URI.create(url));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         try {
             Thread.sleep(4000);
@@ -52,18 +101,13 @@ public class InputSemaphore {
         }
 
         System.out.println("making http request for access_token...");
-        SpotifyUser spotifyUser = obtainTokens(user);
+        SpotifyUser user1 = HTTPServer.reqeustTokensFromRemoteResource(user);
+        System.out.println("---SUCCESS---");
 
-        if (spotifyUser.getAccess_token() != null) {
-            user.setAuthenticated(true);
-            System.out.println("---SUCCESS---");
-        }
     }
 
     private static void makeInitiallCallForAuthCode(SpotifyUser user) {
-        System.out.println("use this link to request the access code: ");
-        System.out.println("https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&redirect_uri=http://localhost:8181/callback&response_type=code");
-        System.out.println("waiting for code...");
+
         try {
             HTTPServer.HTTPClient.sendInitialAuthRequestToRemoteResource(user);
         } catch (IOException | InterruptedException | URISyntaxException e) {
@@ -71,9 +115,6 @@ public class InputSemaphore {
         }
     }
 
-    private SpotifyUser obtainTokens(SpotifyUser user) {
-        return HTTPServer.reqeustTokensFromRemoteResource(user);
-    }
 
     private void newReleases() {
         System.out.println("---NEW RELEASES---");

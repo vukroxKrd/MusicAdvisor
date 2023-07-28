@@ -419,14 +419,18 @@ files:
 feedback_link: https://hyperskill.org/learn/step/5479#comment
 status: Failed
 feedback:
-  message: "Wrong answer in test #1\n\nNot found correct access token in the result.\
-    \ Make sure, that you use the server from the command line arguments to access\
-    \ the token.\n\nPlease find below the output of your program during this failed\
-    \ test.\nNote that the &#39;&gt;&#39; character indicates the beginning of the\
-    \ input line.\n\n---\n\nArguments: -access http://127.0.0.1:45678\n\n&gt; auth\n\
-    use this link to request the access code: \nhttps://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&amp;redirect_uri=http://localhost:8181/callback&amp;response_type=code\n\
-    waiting for code...\ncode received\nmaking http request for access_token...\n\
-    response:\n{&quot;access_token&quot;:&quot;BQBBBe5UMPIA96jPDNy1vZgKBO6Xl6_CqmEhncn0-7EHitrOwwUFdQmRwd2d-Zvht6k3OsEVJlQpvMpXeuV0GPBhoKXCe9SMg0D44kSwjKoZxM9iM932gee0RHVg2_sN8oFqNTeNPsKX7ZG23J3d1uEjhFSOM55pmXNhLKtuTCizOIT0BGe6c4VEk0TGwv2boD0GnQ&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:3600,&quot;refresh_token&quot;:&quot;AQB6CxjHLaWy8x3LAVy3hm-sLoevg2pFKws4JaXFE97aRa1kwJ__KSRcPpqwrYzvhkf3cRArCfMKVe9rc2_f1_pK6DFfPdr2iSefNyGIGGHRPH2z5egnpFruv51nnghPM7M&quot;}\n\
-    ---SUCCESS---"
-  time: "Mon, 24 Jul 2023 14:53:49 UTC"
+  message: |-
+    Wrong answer in test #1
+
+    Not found a link with redirect_uri after 9 seconds.
+
+    Please find below the output of your program during this failed test.
+    Note that the &#39;&gt;&#39; character indicates the beginning of the input line.
+
+    ---
+
+    Arguments: -access http://127.0.0.1:45678
+
+    &gt; auth
+  time: "Fri, 28 Jul 2023 18:00:14 UTC"
 record: -1

@@ -3,7 +3,7 @@ hyperskill_project:
   ide_files: https://cogniterra.org/media/attachments/lesson/23045/additional_files.json
   is_template_based: false
   use_ide: true
-update_date: "Mon, 24 Jul 2023 16:29:36 UTC"
+update_date: "Fri, 28 Jul 2023 17:53:51 UTC"
 stages:
 - id: 335
   step: 5477
@@ -106,10 +106,10 @@ topics:
     theory_id: 3801
   - title: Defining classes
     theory_id: 3618
-  - title: Instance methods
-    theory_id: 3495
   - title: Constructor
     theory_id: 3535
+  - title: Instance methods
+    theory_id: 3495
   - title: Objects
     theory_id: 4727
   1:

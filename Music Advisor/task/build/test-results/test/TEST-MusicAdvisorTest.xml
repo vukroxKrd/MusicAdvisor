@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-07-24T14:53:43" hostname="VUKROXPC" time="5.393">
+<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2023-07-28T18:02:28" hostname="VUKROXPC" time="4.979">
   <properties/>
-  <testcase name="start" classname="MusicAdvisorTest" time="5.393">
-    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;Not found correct access token in the result. Make sure, that you use the server from the command line arguments to access the token.&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -access http://127.0.0.1:45678&#10;&#10;&gt; auth&#10;use this link to request the access code: &#10;https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&amp;redirect_uri=http://localhost:8181/callback&amp;response_type=code&#10;waiting for code...&#10;code received&#10;making http request for access_token...&#10;response:&#10;{&quot;access_token&quot;:&quot;BQBBBe5UMPIA96jPDNy1vZgKBO6Xl6_CqmEhncn0-7EHitrOwwUFdQmRwd2d-Zvht6k3OsEVJlQpvMpXeuV0GPBhoKXCe9SMg0D44kSwjKoZxM9iM932gee0RHVg2_sN8oFqNTeNPsKX7ZG23J3d1uEjhFSOM55pmXNhLKtuTCizOIT0BGe6c4VEk0TGwv2boD0GnQ&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:3600,&quot;refresh_token&quot;:&quot;AQB6CxjHLaWy8x3LAVy3hm-sLoevg2pFKws4JaXFE97aRa1kwJ__KSRcPpqwrYzvhkf3cRArCfMKVe9rc2_f1_pK6DFfPdr2iSefNyGIGGHRPH2z5egnpFruv51nnghPM7M&quot;}&#10;---SUCCESS---" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
+  <testcase name="start" classname="MusicAdvisorTest" time="4.979">
+    <failure message="java.lang.AssertionError: Wrong answer in test #1&#10;&#10;Not found correct access token in the result. Make sure, that you use the server from the command line arguments to access the token.&#10;&#10;Please find below the output of your program during this failed test.&#10;Note that the '&gt;' character indicates the beginning of the input line.&#10;&#10;---&#10;&#10;Arguments: -access http://127.0.0.1:45678&#10;&#10;&gt; auth&#10;use this link to request the access code: &#10;https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&amp;redirect_uri=http://localhost:8181&amp;response_type=code&#10;waiting for code...&#10;Authorization code not found. Try again.&#10;Authorization code not found. Try again.&#10;Got the code. Return back to your program.&#10;Got the code. Return back to your program.&#10;making http request for access_token...&#10;http://127.0.0.1:45678&#10;https://accounts.spotify.com/http://127.0.0.1:45678 POST&#10;301&#10;Key is: :status&#10;301&#10;Key is: alt-svc&#10;h3=&quot;:443&quot;; ma=2592000,h3-29=&quot;:443&quot;; ma=2592000&#10;Key is: content-length&#10;162&#10;Key is: content-type&#10;text/html&#10;Key is: date&#10;Fri, 28 Jul 2023 18:02:32 GMT&#10;Key is: location&#10;https://www.spotify.com/int/why-not-available/&#10;Key is: server&#10;envoy&#10;Key is: sp-trace-id&#10;112751182ec0932a&#10;Key is: strict-transport-security&#10;max-age=31536000&#10;Key is: vary&#10;Accept-Encoding&#10;Key is: via&#10;HTTP/2 edgeproxy, 1.1 google&#10;Key is: x-content-type-options&#10;nosniff&#10;Key is: x-envoy-upstream-service-time&#10;10&#10;response:&#10;&lt;html&gt;&#10;&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;&#10;&lt;body&gt;&#10;&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;&#10;&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;&#10;&lt;/body&gt;&#10;&lt;/html&gt;&#10;&#10;---SUCCESS---" type="java.lang.AssertionError">java.lang.AssertionError: Wrong answer in test #1
 
 Not found correct access token in the result. Make sure, that you use the server from the command line arguments to access the token.
 
@@ -15,12 +15,51 @@ Arguments: -access http://127.0.0.1:45678
 
 &gt; auth
 use this link to request the access code: 
-https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&amp;redirect_uri=http://localhost:8181/callback&amp;response_type=code
+https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&amp;redirect_uri=http://localhost:8181&amp;response_type=code
 waiting for code...
-code received
+Authorization code not found. Try again.
+Authorization code not found. Try again.
+Got the code. Return back to your program.
+Got the code. Return back to your program.
 making http request for access_token...
+http://127.0.0.1:45678
+https://accounts.spotify.com/http://127.0.0.1:45678 POST
+301
+Key is: :status
+301
+Key is: alt-svc
+h3=&quot;:443&quot;; ma=2592000,h3-29=&quot;:443&quot;; ma=2592000
+Key is: content-length
+162
+Key is: content-type
+text/html
+Key is: date
+Fri, 28 Jul 2023 18:02:32 GMT
+Key is: location
+https://www.spotify.com/int/why-not-available/
+Key is: server
+envoy
+Key is: sp-trace-id
+112751182ec0932a
+Key is: strict-transport-security
+max-age=31536000
+Key is: vary
+Accept-Encoding
+Key is: via
+HTTP/2 edgeproxy, 1.1 google
+Key is: x-content-type-options
+nosniff
+Key is: x-envoy-upstream-service-time
+10
 response:
-{&quot;access_token&quot;:&quot;BQBBBe5UMPIA96jPDNy1vZgKBO6Xl6_CqmEhncn0-7EHitrOwwUFdQmRwd2d-Zvht6k3OsEVJlQpvMpXeuV0GPBhoKXCe9SMg0D44kSwjKoZxM9iM932gee0RHVg2_sN8oFqNTeNPsKX7ZG23J3d1uEjhFSOM55pmXNhLKtuTCizOIT0BGe6c4VEk0TGwv2boD0GnQ&quot;,&quot;token_type&quot;:&quot;Bearer&quot;,&quot;expires_in&quot;:3600,&quot;refresh_token&quot;:&quot;AQB6CxjHLaWy8x3LAVy3hm-sLoevg2pFKws4JaXFE97aRa1kwJ__KSRcPpqwrYzvhkf3cRArCfMKVe9rc2_f1_pK6DFfPdr2iSefNyGIGGHRPH2z5egnpFruv51nnghPM7M&quot;}
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;301 Moved Permanently&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;center&gt;&lt;h1&gt;301 Moved Permanently&lt;/h1&gt;&lt;/center&gt;
+&lt;hr&gt;&lt;center&gt;nginx&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
 ---SUCCESS---
 	at org.junit.Assert.fail(Assert.java:89)
 	at org.hyperskill.hstest.stage.StageTest.start(StageTest.java:203)
@@ -74,46 +113,56 @@ response:
 Start test 1?[0m
 > auth
 use this link to request the access code: 
-https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&redirect_uri=http://localhost:8181/callback&response_type=code
+https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&redirect_uri=http://localhost:8181&response_type=code
 waiting for code...
-?[0;34mTester: making requests to redirect uri: http://localhost:8181/callback
-?[0m?[0;34mTester: Error: HTTP/1.1 header parser received no bytes
-code received
+?[0;34mTester: making requests to redirect uri: http://localhost:8181
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 1: Authorization code not found. Try again.
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 2: Authorization code not found. Try again.
+Got the code. Return back to your program.
+?[0m?[0;34mTester: done request 3: Got the code. Return back to your program.
+Got the code. Return back to your program.
 making http request for access_token...
+http://127.0.0.1:45678
+https://accounts.spotify.com/http://127.0.0.1:45678 POST
+301
+Key is: :status
+301
+Key is: alt-svc
+h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+Key is: content-length
+162
+Key is: content-type
+text/html
+Key is: date
+Fri, 28 Jul 2023 18:02:32 GMT
+Key is: location
+https://www.spotify.com/int/why-not-available/
+Key is: server
+envoy
+Key is: sp-trace-id
+112751182ec0932a
+Key is: strict-transport-security
+max-age=31536000
+Key is: vary
+Accept-Encoding
+Key is: via
+HTTP/2 edgeproxy, 1.1 google
+Key is: x-content-type-options
+nosniff
+Key is: x-envoy-upstream-service-time
+10
 response:
-{"access_token":"BQBBBe5UMPIA96jPDNy1vZgKBO6Xl6_CqmEhncn0-7EHitrOwwUFdQmRwd2d-Zvht6k3OsEVJlQpvMpXeuV0GPBhoKXCe9SMg0D44kSwjKoZxM9iM932gee0RHVg2_sN8oFqNTeNPsKX7ZG23J3d1uEjhFSOM55pmXNhLKtuTCizOIT0BGe6c4VEk0TGwv2boD0GnQ","token_type":"Bearer","expires_in":3600,"refresh_token":"AQB6CxjHLaWy8x3LAVy3hm-sLoevg2pFKws4JaXFE97aRa1kwJ__KSRcPpqwrYzvhkf3cRArCfMKVe9rc2_f1_pK6DFfPdr2iSefNyGIGGHRPH2z5egnpFruv51nnghPM7M"}
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx</center>
+</body>
+</html>
+
 ---SUCCESS---
 ]]></system-out>
-  <system-err><![CDATA[?[0;34mjava.io.IOException: HTTP/1.1 header parser received no bytes
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:586)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:123)
-?[0m?[0;34m	at Server.run(Server.java:74)
-?[0m?[0;34mCaused by: java.io.IOException: HTTP/1.1 header parser received no bytes
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.Utils.wrapWithExtraDetail(Utils.java:348)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.Http1Response$HeadersReader.onReadError(Http1Response.java:675)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.checkForErrors(Http1AsyncReceiver.java:302)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver.flush(Http1AsyncReceiver.java:268)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$LockingRestartableTask.run(SequentialScheduler.java:205)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(SequentialScheduler.java:149)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:230)
-?[0m?[0;34m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
-?[0m?[0;34m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
-?[0m?[0;34m	at java.base/java.lang.Thread.run(Thread.java:833)
-?[0m?[0;34m	at java.base/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:162)
-?[0m?[0;34mCaused by: java.io.EOFException: EOF reached while reading
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.Http1AsyncReceiver$Http1TubeSubscriber.onComplete(Http1AsyncReceiver.java:596)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadSubscription.signalCompletion(SocketTube.java:640)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:845)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:230)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:303)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:256)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalReadable(SocketTube.java:774)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadEvent.signalEvent(SocketTube.java:957)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.SocketTube$SocketFlowEvent.handle(SocketTube.java:253)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.handleEvent(HttpClientImpl.java:979)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.lambda$run$3(HttpClientImpl.java:934)
-?[0m?[0;34m	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-?[0m?[0;34m	at java.net.http/jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:934)
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>
