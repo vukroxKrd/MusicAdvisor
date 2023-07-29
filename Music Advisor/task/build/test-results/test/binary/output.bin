@@ -5,50 +5,31 @@
 ‰https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&redirect_uri=http://localhost:8181&response_type=code
 waiting for code...
 G[0;34mTester: making requests to redirect uri: http://localhost:8181
-*Authorization code not found. Try again.
 M[0m[0;34mTester: done request 1: Authorization code not found. Try again.
-*Authorization code not found. Try again.
 M[0m[0;34mTester: done request 2: Authorization code not found. Try again.
-,Got the code. Return back to your program.
 O[0m[0;34mTester: done request 3: Got the code. Return back to your program.
-,Got the code. Return back to your program.
+code received
 )making http request for access_token...
-http://127.0.0.1:45678
-:https://accounts.spotify.com/http://127.0.0.1:45678 POST
-301
-Key is: :status
-301
-Key is: alt-svc
-0h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
-Key is: content-length
-162
-Key is: content-type
-text/html
-Key is: date
-Fri, 28 Jul 2023 18:02:32 GMT
-Key is: location
-0https://www.spotify.com/int/why-not-available/
-Key is: server
-envoy
-Key is: sp-trace-id
-112751182ec0932a
-#Key is: strict-transport-security
-max-age=31536000
-Key is: vary
-Accept-Encoding
-Key is: via
-HTTP/2 edgeproxy, 1.1 google
- Key is: x-content-type-options
-	nosniff
-'Key is: x-envoy-upstream-service-time
-10
 response:
-<html>
-3<head><title>301 Moved Permanently</title></head>
-<body>
-1<center><h1>301 Moved Permanently</h1></center>
-<hr><center>nginx</center>
-	</body>
-	</html>
-
+g{"access_token":"456456","token_type":"Bearer","expires_in":3600,"refresh_token":"567567","scope":""}
 ---SUCCESS---
+> featured
+---FEATURED---
+Mellow Morning
+Wake Up and Smell the Coffee
+Monday Motivation
+Songs to Sing in the Shower
+> exit
+---GOODBYE!---
+[1;31m
+Start test 2[0m
+> featured
+)Please, provide access for application.
+> exit
+---GOODBYE!---
+[1;31m
+Start test 3[0m
+> new
+)Please, provide access for application.
+> exit
+---GOODBYE!---

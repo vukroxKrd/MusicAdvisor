@@ -1,8 +1,5 @@
 package advisor;
 
-import server.HTTPServer;
-
-import java.io.IOException;
 import java.util.Scanner;
 
 import static advisor.InputSemaphore.continueReceivingInput;
@@ -15,9 +12,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-//        for (String arg : args) {
-//            System.out.println(arg);
-//        }
+
         String endpointUrl = "";
         if (args.length > 0 && args[0].equals("-access")) {
             endpointUrl = args[1];
