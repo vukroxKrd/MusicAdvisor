@@ -1,0 +1,457 @@
+type: edu
+files:
+- name: build.gradle
+  visible: true
+  text: |-
+    apply plugin: 'java'
+    apply plugin: 'application'
+
+    group 'advisor'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        implementation 'com.google.code.gson:gson:+'
+    }
+
+    jar {
+        manifest {
+            attributes 'Main-Class' : 'advisor.Main'
+        }
+        from {
+            configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+    }
+  learner_created: false
+- name: src/advisor/InputSemaphore.java
+  visible: true
+  text: |
+    package advisor;
+
+    import java.util.*;
+
+    public class InputSemaphore {
+        public static final List<String> supportedOps = List.of("new", "featured", "categories", "playlists Mood", "auth", "exit");
+        public static boolean continueReceivingInput = true;
+        private SpotifyUser user;
+
+        public void selectOperation(String input) {
+
+            String playlistCategory = "";
+            if (input.contains("playlists")) {
+                playlistCategory = input.replaceAll("playlists ", "");
+                input = "playlists";
+            }
+
+
+            if (input.equals("exit")) {
+                sayGoodBye();
+            } else if (!user.isAuthenticated() && !input.equals("auth")) {
+                promptUserToAuthenticate();
+            } else {
+                switch (input) {
+                    case "new" -> newReleases();
+                    case "featured" -> featured();
+                    case "categories" -> categories();
+                    case "playlists" -> playlists(playlistCategory);
+                    case "auth" -> authenticate();
+                    case "exit" -> sayGoodBye();
+                    default -> returnSupportedOpList(supportedOps);
+                }
+            }
+        }
+
+        public SpotifyUser getUser() {
+            return user;
+        }
+
+        public void setUser(SpotifyUser user) {
+            this.user = user;
+        }
+
+        private void promptUserToAuthenticate() {
+            System.out.println("Please, provide access for application.");
+        }
+
+        private void authenticate() {
+            System.out.println("https://accounts.spotify.com/authorize?client_id=0db1be20b0494973a17516bae8af091d&redirect_uri=http://localhost:8080&response_type=code");
+            user.setAuthenticated(true);
+            System.out.println("---SUCCESS---");
+        }
+
+        private void newReleases() {
+            System.out.println("---NEW RELEASES---");
+            Map<String, List<String>> releases = new LinkedHashMap<>();
+            releases.put("Mountains", List.of("Sia", "Diplo", "Labrinth"));
+            releases.put("Runaway", List.of("Lil Peep"));
+            releases.put("The Greatest Show", List.of("Panic! At The Disco"));
+            releases.put("All Out Life", List.of("Slipknot"));
+            releases.forEach((release, group) -> System.out.println(release + " " + group));
+        }
+
+        private void featured() {
+            System.out.println("---FEATURED---");
+            List<String> featured = new ArrayList<>();
+            featured.add("Mellow Morning");
+            featured.add("Wake Up and Smell the Coffee");
+            featured.add("Monday Motivation");
+            featured.add("Songs to Sing in the Shower");
+            featured.forEach(System.out::println);
+        }
+
+        private void categories() {
+            System.out.println("---CATEGORIES---");
+            List<String> categories = new ArrayList<>();
+            categories.add("Top Lists");
+            categories.add("Pop");
+            categories.add("Mood");
+            categories.add("Latin");
+            categories.forEach(System.out::println);
+        }
+
+        private void playlists(String category) {
+            System.out.println("---" + category.toUpperCase() + " PLAYLISTS---");
+            List<String> moodPlaylists = new ArrayList<>();
+            moodPlaylists.add("Walk Like A Badass");
+            moodPlaylists.add("Rage Beats");
+            moodPlaylists.add("Arab Mood Booster");
+            moodPlaylists.add("Sunday Stroll");
+            moodPlaylists.forEach(System.out::println);
+        }
+
+        private void sayGoodBye() {
+            System.out.println("---GOODBYE!---");
+            continueReceivingInput = false;
+        }
+
+        private void returnSupportedOpList(List<String> operations) {
+            continueReceivingInput = false;
+            System.out.println("The list of supported operations: ");
+            operations.forEach(System.out::println);
+        }
+    }
+  learner_created: false
+- name: src/advisor/Main.java
+  visible: true
+  text: |
+    package advisor;
+
+    import java.util.Scanner;
+
+    import static advisor.InputSemaphore.continueReceivingInput;
+    import static advisor.InputSemaphore.supportedOps;
+
+    public class Main {
+        static Scanner scanner = new Scanner(System.in);
+
+        public static String requestOperation() {
+            return scanner.nextLine();
+        }
+
+        public static void main(String[] args) {
+
+            SpotifyUser user = new SpotifyUser();
+            InputSemaphore semaphore = new InputSemaphore();
+            semaphore.setUser(user);
+
+            do {
+                semaphore.selectOperation(requestOperation());
+            } while (continueReceivingInput);
+        }
+    }
+  learner_created: false
+- name: src/advisor/SpotifyUser.java
+  visible: true
+  text: |
+    package advisor;
+
+    import advisor.InputSemaphore;
+
+    public class SpotifyUser {
+        private boolean isAuthenticated = false;
+        public boolean isAuthenticated() {
+            return isAuthenticated;
+        }
+        public void setAuthenticated(boolean authenticated) {
+            isAuthenticated = authenticated;
+        }
+    }
+  learner_created: false
+- name: test/MockTokenServer.java
+  visible: false
+  text: |
+    import org.hyperskill.hstest.mocks.web.WebServerMock;
+
+    public class MockTokenServer extends Thread {
+
+        WebServerMock accessServer;
+
+        public MockTokenServer (WebServerMock accessServer) {
+            this.accessServer = accessServer;
+        }
+
+        @Override
+        public void run() {
+            accessServer.start();
+            accessServer.run();
+        }
+
+        public void stopMock() {
+            interrupt();
+        }
+    }
+  learner_created: false
+- name: test/MusicAdvisorTest.java
+  visible: false
+  text: |-
+    import org.hyperskill.hstest.dynamic.DynamicTest;
+    import org.hyperskill.hstest.mocks.web.WebServerMock;
+    import org.hyperskill.hstest.stage.StageTest;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.hyperskill.hstest.testing.TestedProgram;
+    import org.junit.AfterClass;
+
+    @SuppressWarnings("unused")
+    public class MusicAdvisorTest extends StageTest<String> {
+
+        private static final String fictiveAuthCode = "123123";
+        private static final String fictiveAccessToken = "456456";
+        private static final String fictiveRefreshToken = "567567";
+
+        private static final int accessServerPort = 45678;
+        private static final String accessServerUrl = "http://127.0.0.1:" + accessServerPort;
+
+        private static final String[] arguments = new String[]{
+                "-access",
+                accessServerUrl
+        };
+
+        private static final String tokenResponse = "{" +
+                "\"access_token\":\"" + fictiveAccessToken + "\"," +
+                "\"token_type\":\"Bearer\"," +
+                "\"expires_in\":3600," +
+                "\"refresh_token\":" + "\"" + fictiveRefreshToken + "\"," +
+                "\"scope\":\"\"" +
+                "}";
+
+        private static final WebServerMock accessServer = new WebServerMock(accessServerPort)
+                .setPage("/api/token", tokenResponse);
+
+        private static final MockTokenServer tokenServer = new MockTokenServer(accessServer);
+
+        @DynamicTest
+        CheckResult testAuth() {
+
+            TestedProgram userProgram = new TestedProgram();
+            userProgram.start(arguments);
+            userProgram.setReturnOutputAfterExecution(false);
+
+            Server server = new Server(userProgram, fictiveAuthCode);
+            server.start();
+            tokenServer.start();
+
+            userProgram.goBackground();
+            userProgram.execute("auth");
+
+            try {
+                server.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if (Server.checkResult != null) {
+                return Server.checkResult;
+            }
+
+            userProgram.stopBackground();
+
+            String outputAfterAuth = userProgram.getOutput();
+            if (!outputAfterAuth.contains(fictiveAccessToken)) {
+                return CheckResult.wrong("Not found correct access token in the result. " +
+                        "Make sure, that you use the server from the command line arguments to access the token.");
+            }
+
+            userProgram.execute("featured");
+
+            String outputAfterFeatured = userProgram.getOutput();
+            if (!outputAfterFeatured.contains("---FEATURED---")) {
+                return CheckResult.wrong("When \"featured\" was inputted there should be \"---FEATURED---\" line");
+            }
+
+            userProgram.execute("exit");
+            userProgram.stop();
+
+            return CheckResult.correct();
+        }
+
+        @DynamicTest
+        CheckResult testNewWithoutAuth() {
+
+            TestedProgram userProgram = new TestedProgram();
+            userProgram.start(arguments);
+            userProgram.setReturnOutputAfterExecution(false);
+
+            userProgram.execute("new");
+            String outputAfterNew = userProgram.getOutput();
+
+            if (!outputAfterNew.strip().startsWith("Please, provide access for application.")) {
+                return CheckResult.wrong("When no access provided you should output " +
+                        "\"Please, provide access for application.\"");
+            }
+
+            userProgram.execute("exit");
+            userProgram.stop();
+
+            return CheckResult.correct();
+        }
+
+        @DynamicTest
+        CheckResult testFeaturedWithoutAuth() {
+
+            TestedProgram userProgram = new TestedProgram();
+            userProgram.start(arguments);
+            userProgram.setReturnOutputAfterExecution(false);
+
+            userProgram.execute("featured");
+            String outputAfterNew = userProgram.getOutput();
+
+            if (!outputAfterNew.strip().startsWith("Please, provide access for application.")) {
+                return CheckResult.wrong("When no access provided you should output " +
+                        "\"Please, provide access for application.\"");
+            }
+
+            userProgram.execute("exit");
+            userProgram.stop();
+
+            return CheckResult.correct();
+        }
+
+        @AfterClass
+        public static void afterTest() {
+            tokenServer.stopMock();
+        }
+
+    }
+  learner_created: false
+- name: test/Server.java
+  visible: false
+  text: |
+    import org.hyperskill.hstest.dynamic.output.OutputHandler;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.hyperskill.hstest.testing.TestedProgram;
+
+    import java.net.URI;
+    import java.net.http.HttpClient;
+    import java.net.http.HttpRequest;
+    import java.net.http.HttpResponse;
+    import java.net.http.HttpTimeoutException;
+    import java.time.Duration;
+
+    public class Server extends Thread {
+
+        TestedProgram userProgram;
+        private final String fictiveAuthCode;
+        public static CheckResult checkResult = null;
+        String redirectUri = "";
+
+
+        public Server(TestedProgram userProgram, String fictiveAuthCode) {
+            this.userProgram = userProgram;
+            this.fictiveAuthCode = fictiveAuthCode;
+        }
+
+        @Override
+        public void run() {
+            long searchTime = System.currentTimeMillis();
+
+            while (!Thread.interrupted()) {
+
+                if (System.currentTimeMillis() - searchTime > 1000 * 9) {
+                    checkResult = CheckResult.wrong("Not found a link with redirect_uri after 9 seconds.");
+                    return;
+                }
+
+                String out = OutputHandler.getDynamicOutput();
+                if (out.contains("redirect_uri=")) {
+                    redirectUri = out.split("redirect_uri=")[1];
+                    if (redirectUri.contains("&")) {
+                        redirectUri = redirectUri.split("&")[0];
+                    }
+                    if (redirectUri.contains("\n")) {
+                        redirectUri = redirectUri.split("\\R")[0];
+                    }
+                    break;
+                }
+
+                try {
+                    sleep(300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            try {
+                HttpClient client = HttpClient.newBuilder().build();
+                HttpRequest emptyRequest = HttpRequest.newBuilder()
+                        .uri(URI.create(redirectUri))
+                        .timeout(Duration.ofMillis(500))
+                        .GET()
+                        .build();
+                HttpRequest errorRequest = HttpRequest.newBuilder()
+                        .uri(URI.create(redirectUri + "?error=access_denied"))
+                        .timeout(Duration.ofMillis(500))
+                        .GET()
+                        .build();
+                HttpRequest codeRequest = HttpRequest.newBuilder()
+                        .uri(URI.create(redirectUri + "?code=" + fictiveAuthCode))
+                        .timeout(Duration.ofMillis(500))
+                        .GET()
+                        .build();
+
+                System.out.println("Tester: making requests to redirect uri: " + redirectUri);
+                HttpResponse<String> badResponse = client.send(emptyRequest, HttpResponse.BodyHandlers.ofString());
+                System.out.println("Tester: done request 1: " + badResponse.body());
+                HttpResponse<String> badResponse2 = client.send(errorRequest, HttpResponse.BodyHandlers.ofString());
+                System.out.println("Tester: done request 2: " + badResponse2.body());
+                HttpResponse<String> goodResponse = client.send(codeRequest, HttpResponse.BodyHandlers.ofString());
+                System.out.println("Tester: done request 3: " + goodResponse.body());
+
+                if (!badResponse.body().contains("Authorization code not found. Try again.")
+                        || !badResponse2.body().contains("Authorization code not found. Try again.")) {
+                    checkResult = CheckResult.wrong("You should send to the browser: `Authorization code not found. Try again.` if there is no code.");
+                    return;
+                }
+
+                if (!goodResponse.body().contains("Got the code. Return back to your program.")) {
+                    checkResult = CheckResult.wrong("\"You should send `Got the code. Return back to your program.` \" +\n" +
+                            "                        \"if the query contains the code.");
+                }
+            } catch (HttpTimeoutException e) {
+                checkResult = CheckResult.wrong("Not received any response from the server, found in redirect_uri: "
+                        + redirectUri);
+            } catch (InterruptedException e) {
+                checkResult = CheckResult.wrong("Request to " + redirectUri + " was interrupted. " +
+                        "Make sure, that you give the right feedback in your browser.");
+            } catch (Exception e) {
+                System.out.println("Tester: Error: " + e.getMessage());
+                e.printStackTrace();
+            }
+
+        }
+    }
+  learner_created: false
+- name: src/server/SpotifyAuthResponse.java
+  visible: true
+  learner_created: true
+- name: src/resources/spotify.properties
+  visible: true
+  learner_created: true
+- name: src/server/HTTPServer.java
+  visible: true
+  learner_created: true
+feedback_link: https://hyperskill.org/learn/step/5479#comment
+status: Solved
+record: 2

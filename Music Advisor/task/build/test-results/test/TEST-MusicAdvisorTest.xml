@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MusicAdvisorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-08-20T08:07:15" hostname="VUKROXPC" time="1.131">
+  <properties/>
+  <testcase name="start" classname="MusicAdvisorTest" time="1.131"/>
+  <system-out><![CDATA[?[1;31m
+Start test 1?[0m
+> auth
+use this link to request the access code: 
+http://127.0.0.1:45678/authorize?client_id=0db1be20b0494973a17516bae8af091d&redirect_uri=http://localhost:8493&response_type=code
+waiting for code...
+?[0;34mTester: making requests to redirect uri: http://localhost:8493
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 1: Authorization code not found. Try again.
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 2: Authorization code not found. Try again.
+Got the code. Return back to your program.
+code received
+?[0m?[0;34mTester: done request 3: Got the code. Return back to your program.
+Making http request for access_token...
+Success!
+> exit
+---GOODBYE!---
+?[1;31m
+Start test 2?[0m
+> auth
+use this link to request the access code: 
+http://127.0.0.1:45678/authorize?client_id=0db1be20b0494973a17516bae8af091d&redirect_uri=http://localhost:8298&response_type=code
+waiting for code...
+?[0;34mTester: making requests to redirect uri: http://localhost:8298
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 1: Authorization code not found. Try again.
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 2: Authorization code not found. Try again.
+Got the code. Return back to your program.
+code received
+?[0m?[0;34mTester: done request 3: Got the code. Return back to your program.
+Making http request for access_token...
+Success!
+> categories
+Top Lists
+---PAGE 1 OF 3---
+> next
+Super Mood
+---PAGE 2 OF 3---
+> next
+Party Time
+---PAGE 3 OF 3---
+> prev
+Super Mood
+---PAGE 2 OF 3---
+> prev
+Top Lists
+---PAGE 1 OF 3---
+?[1;31m
+Start test 3?[0m
+> auth
+use this link to request the access code: 
+http://127.0.0.1:45678/authorize?client_id=0db1be20b0494973a17516bae8af091d&redirect_uri=http://localhost:8750&response_type=code
+waiting for code...
+?[0;34mTester: making requests to redirect uri: http://localhost:8750
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 1: Authorization code not found. Try again.
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 2: Authorization code not found. Try again.
+Got the code. Return back to your program.
+code received
+?[0m?[0;34mTester: done request 3: Got the code. Return back to your program.
+Making http request for access_token...
+Success!
+> featured
+Monday Morning Mood
+http://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
+
+---PAGE 1 OF 2---
+> next
+Upp och hoppa!
+http://open.spotify.com/user/spotify__sverige/playlist/4uOEx4OUrkoGNZoIlWMUbO
+
+---PAGE 2 OF 2---
+> prev
+Monday Morning Mood
+http://open.spotify.com/user/spotify/playlist/6ftJBzU2LLQcaKefMi7ee7
+
+---PAGE 1 OF 2---
+> exit
+No more pages.
+?[1;31m
+Start test 4?[0m
+> auth
+use this link to request the access code: 
+http://127.0.0.1:45678/authorize?client_id=0db1be20b0494973a17516bae8af091d&redirect_uri=http://localhost:8450&response_type=code
+waiting for code...
+?[0;34mTester: making requests to redirect uri: http://localhost:8450
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 1: Authorization code not found. Try again.
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 2: Authorization code not found. Try again.
+Got the code. Return back to your program.
+code received
+?[0m?[0;34mTester: done request 3: Got the code. Return back to your program.
+Making http request for access_token...
+Success!
+> new
+Runnin'
+[Pharrell Williams]
+https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
+
+---PAGE 1 OF 2---
+> prev
+No more pages.
+Runnin'
+[Pharrell Williams]
+https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
+
+---PAGE 1 OF 2---
+> next
+Sneakin'
+[Drake2]
+https://open.spotify.com/album/0geTzdk2InlqIoB16fW9Nd
+
+---PAGE 2 OF 2---
+> next
+No more pages.
+Sneakin'
+[Drake2]
+https://open.spotify.com/album/0geTzdk2InlqIoB16fW9Nd
+
+---PAGE 2 OF 2---
+> prev
+Runnin'
+[Pharrell Williams]
+https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
+
+---PAGE 1 OF 2---
+> exit
+No more pages.
+> new
+Runnin'
+[Pharrell Williams]
+https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
+
+---PAGE 1 OF 2---
+> prev
+No more pages.
+Runnin'
+[Pharrell Williams]
+https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
+
+---PAGE 1 OF 2---
+> next
+Sneakin'
+[Drake2]
+https://open.spotify.com/album/0geTzdk2InlqIoB16fW9Nd
+
+---PAGE 2 OF 2---
+> next
+No more pages.
+Sneakin'
+[Drake2]
+https://open.spotify.com/album/0geTzdk2InlqIoB16fW9Nd
+
+---PAGE 2 OF 2---
+> prev
+Runnin'
+[Pharrell Williams]
+https://open.spotify.com/album/5ZX4m5aVSmWQ5iHAPQpT71
+
+---PAGE 1 OF 2---
+> exit
+No more pages.
+?[1;31m
+Start test 5?[0m
+> auth
+use this link to request the access code: 
+http://127.0.0.1:45678/authorize?client_id=0db1be20b0494973a17516bae8af091d&redirect_uri=http://localhost:8726&response_type=code
+waiting for code...
+?[0;34mTester: making requests to redirect uri: http://localhost:8726
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 1: Authorization code not found. Try again.
+Authorization code not found. Try again.
+?[0m?[0;34mTester: done request 2: Authorization code not found. Try again.
+Got the code. Return back to your program.
+code received
+?[0m?[0;34mTester: done request 3: Got the code. Return back to your program.
+Making http request for access_token...
+Success!
+> playlists Party Time
+Noite Eletronica
+http://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen
+
+---PAGE 1 OF 2---
+> next
+Festa Indie
+http://open.spotify.com/user/spotifybrazilian/playlist/4HZh0C9y80GzHDbHZyX770
+
+---PAGE 2 OF 2---
+> prev
+Noite Eletronica
+http://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen
+
+---PAGE 1 OF 2---
+> exit
+No more pages.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
